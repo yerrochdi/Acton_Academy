@@ -8,6 +8,7 @@ from project.api.utils import authenticate
 
 auth_blueprint = Blueprint('auth', __name__)
 
+
 @auth_blueprint.route('/auth/register', methods=['POST'])
 def register_user():
     # get post data
@@ -47,6 +48,7 @@ def register_user():
     except (exc.IntegrityError, ValueError) as e:
         db.session.rollback()
         return jsonify(response_object), 400
+
 
 @auth_blueprint.route('/auth/login', methods=['POST'])
 def login_user():
@@ -88,6 +90,7 @@ def get_user_status(resp):
         'data': user.to_json()
     }
     return jsonify(response_object), 200
+
 
 @auth_blueprint.route('/auth/logout', methods=['GET'])
 @authenticate

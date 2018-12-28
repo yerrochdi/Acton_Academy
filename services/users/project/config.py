@@ -1,6 +1,5 @@
 # services/users/project/config.py
 
-
 import os  # new
 
 
@@ -21,7 +20,6 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     DEBUG_TB_ENABLED = True  # new
     BCRYPT_LOG_ROUNDS = 4  # new
-    
 
 
 class TestingConfig(BaseConfig):

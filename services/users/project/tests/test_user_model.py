@@ -21,7 +21,6 @@ class TestUserModel(BaseTestCase):
         self.assertTrue(user.password)
         self.assertFalse(user.admin)  # new
 
-
     def test_add_user_duplicate_username(self):
         add_user('justatest', 'test@test.com', 'greaterthaneight')
         duplicate_user = User(
@@ -33,7 +32,7 @@ class TestUserModel(BaseTestCase):
         self.assertRaises(IntegrityError, db.session.commit)
 
     def test_add_user_duplicate_email(self):
-        add_user('justatest', 'test@test.com','test')
+        add_user('justatest', 'test@test.com', 'test')
         duplicate_user = User(
             username='justatest2',
             email='test@test.com',
@@ -43,7 +42,7 @@ class TestUserModel(BaseTestCase):
         self.assertRaises(IntegrityError, db.session.commit)
 
     def test_to_json(self):
-        user = add_user('justatest', 'test@test.com','test')
+        user = add_user('justatest', 'test@test.com', 'test')
         self.assertTrue(isinstance(user.to_json(), dict))
 
     def test_passwords_are_random(self):
