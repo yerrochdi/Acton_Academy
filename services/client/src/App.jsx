@@ -5,7 +5,6 @@ import NavBar from './components/NavBar';
 import Form from './components/Form';
 
 import UsersList from './components/UsersList';
-import AddUser from './components/AddUser';
 import About from './components/About';
 import Logout from './components/Logout';
 import UserStatus from './components/UserStatus';
@@ -109,20 +108,11 @@ class App extends Component {
               <div className="column is-half">
                 <br/>
                 <Switch>
-                  <Route exact path='/' render={() => (
-                    <div>
-                      <h1 className="title is-1">All Users</h1>
-                      <hr/><br/>
-                      <AddUser
-                        username={this.state.username}
-                        email={this.state.email}
-                        addUser={this.addUser}
-                        handleChange={this.handleChange}
-                      />
-                      <br/><br/>
-                      <UsersList users={this.state.users}/>
-                    </div>
-                  )} />
+                <Route exact path='/' render={() => (
+                  <UsersList
+                    users={this.state.users}
+                  />
+                )} />
                   <Route exact path='/about' component={About}/>
                   <Route exact path='/register' render={() => (
                     <Form
